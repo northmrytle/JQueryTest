@@ -87,8 +87,8 @@ function displayLayout() {
 function displayDefaultLayout(){ 
     console.log("displayDefaultLayout");
 
-//    controls.push( new vmsGauge('page1', 'ff1a', 'GPH Port', 'flow.sensor1.flowCount0',0.4755096,0,30,viewWidth*.45,viewWidth *.45,80,5) );
-//    controls.push( new vmsGauge('page2', 'sp1', 'MPH', 'curspeed', 2.23694,0,90,viewWidth*.75,viewWidth*.75,80,viewWidth * .125) );
+    controls.push( new vmsGauge('dashBoard1', 'ff1a', 'GPH Port', 'flow.sensor1.flowCount0',0.4755096,0,30,viewWidth*.45,viewWidth *.45,80,5) );
+    controls.push( new vmsGauge('dashBoard2', 'sp1', 'MPH', 'curspeed', 2.23694,0,90,viewWidth*.75,viewWidth*.75,80,viewWidth * .125) );
     $('#dashBoard2').hide();
 }; 
 
