@@ -43,7 +43,7 @@ function onReady(){
         displayLayout();
         setInterval('updateNetworkStatus()', 1000);
 //        displayControlPanel();
-//        startSpeed();
+        startSpeed();
 //        document.getElementById('');
         $("#appMain").on("swipeleft",swipeleftHandler);
         $("#appMain").on("swiperight",swiperightHandler);
