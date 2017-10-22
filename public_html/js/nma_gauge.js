@@ -6,7 +6,7 @@
 
 var gauges = [];
 
-function vmsGauge(
+function nmaGauge(
         parentElement, 
         id, 
         name, 
@@ -191,28 +191,29 @@ function vmsGauge(
         var increment = 270 / range;
         this.needle = this.gauge.getById("needle");
         this.needle.animate({transform: ["R", newValue * increment, width/2, height/2 ]}, 750, "<>");
-        this.value = newValue;
+//        this.value = newValue;
     };
     
-    this.getJSONString = function () {
-        
-         var parameters = {
-        'type': this.type,
-        'parentElement': parentElement, 
-        'id': this.id, 
-        'name': this.name, 
-        'dataPath': this.dataPath, 
-        'factor': this.factor, 
-        'minValue':this.minValue, 
-        'maxValue':this.maxValue, 
-        'height':this.height, 
-        'width':this.width,
-        'top':this.top,
-        'left': this.left
-        };
     
-        return JSON.stringify(parameters);
-    };
+//    this.getJSONString = function () {
+//        
+//         var parameters = {
+//        'type': this.type,
+//        'parentElement': parentElement, 
+//        'id': this.id, 
+//        'name': this.name, 
+//        'dataPath': this.dataPath, 
+//        'factor': this.factor, 
+//        'minValue':this.minValue, 
+//        'maxValue':this.maxValue, 
+//        'height':this.height, 
+//        'width':this.width,
+//        'top':this.top,
+//        'left': this.left
+//        };
+//    
+//        return JSON.stringify(parameters);
+//    };
     
 };
 
