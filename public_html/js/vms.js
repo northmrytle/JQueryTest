@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+//'use strict';
+
 var viewHeight = document.documentElement.clientHeight;
 var viewWidth = document.documentElement.clientWidth;
 
@@ -41,7 +43,7 @@ function onReady(){
     console.log('onReady');
     try{
 //        displayTitle();
-//        displayLayout();
+        displayLayout();
 //        displayControlPanel();
 //        startSpeed();
 //        document.getElementById('');
@@ -53,7 +55,7 @@ function onReady(){
 //        $(".graphFrame").draggable();
 //        document.getElementById('page1').style.height = viewHeight - 40;
 //        setDisplayMode(localStorage.displayMode);
-//        startInstrumentation();
+        startInstrumentation();
 //        setSwipeParameters();
 //        $("#main").on('taphold', toggleDisplayMode);
     }
@@ -82,8 +84,7 @@ function setSwipeParameters(){
 
 
 function displayTitle(){
-    
-    
+        
     var parent = document.getElementById('main');
     var header = document.createElement('div');
     header.setAttribute('id', 'appHeader');
@@ -103,6 +104,7 @@ function displayTitle(){
     menuButton.innerHTML = "<img src='img/menu_lines.png' height='25px' width='25px'/>";
     menuButton.addEventListener('click', displaySettingsMenu, false);
     header.appendChild(menuButton);   
+    
 };
 
 
@@ -170,45 +172,60 @@ function displayLayout() {
     
 function displayDefaultLayout(){ 
     console.log("displayDefaultLayout");
-    controls.push( new vmsDisplay('page1', 'ff1', 'Fuel Flow Port', 'flow.sensor1.flowCount0','0.4755096','GPH',0,0,75,viewWidth*.50-5,5,5));   //.0005 * .264172 * 3600
+//    controls.push( new vmsDisplay('page1', 'ff1', 'Fuel Flow Port', 'flow.sensor1.flowCount0','0.4755096','GPH',0,0,75,viewWidth*.50-5,5,5));   //.0005 * .264172 * 3600
     controls.push( new vmsGauge('page1', 'ff1a', 'GPH Port', 'flow.sensor1.flowCount0',0.4755096,0,30,viewWidth*.45,viewWidth *.45,80,5) );
-    controls.push( new vmsDisplay('page1', 'th1', 'Total Hours Port','flow.sensor1.flowTime1',1/3600000,'Hours',1,0,75,viewWidth*.50-5,viewWidth*.75,5) );
-    controls.push( new vmsDisplay('page1', 'tf1', 'Total Fuel Port','flow.sensor1.flowCount1','0.000132086', 'Gallons',1,1,75,viewWidth*.50-5,viewWidth*.75+75,5) );           //.0005 * .264172
-        
-    controls.push( new vmsDisplay('page1', 'ff2', 'Fuel Flow Stbd','flow.sensor2.flowCount0','0.4755096', 'GPH',1,1,75,viewWidth*.50,5,viewWidth*.50) );           //.0005 * .264172
-    controls.push( new vmsGauge('page1', 'ff2a', 'GPH Stbd', 'flow.sensor2.flowCount0',0.4755096,0,30,viewWidth*.45,viewWidth *.45,80,viewWidth*.50) );
-    controls.push( new vmsDisplay('page1', 'th2', 'Total Hours Stbd','flow.sensor2.flowTime1',1/3600000,'Hours',1,1,75,viewWidth*.50,viewWidth*.75,viewWidth*.50) );           //.0005 * .264172
-    controls.push( new vmsDisplay('page1', 'tf2', 'Total Fuel Stbd','flow.sensor2.flowCount1','0.000132086', 'Gallons',1,1,75,viewWidth*.50,viewWidth*.75+75,viewWidth*.50) );           //.0005 * .264172
-    
-    
-//    controls.push( new vmsWarning('page1', 'fl1', 'FL', 'flow.sensor1.flowCount0',0.4755096,10,60,60,viewWidth*.75+35,viewWidth-85) );
-
-    controls.push( new vmsGraph('page1', 'ff1b', 'Fuel Flow Port','flow.sensor1.flowCount0',0.4755096,0,30,75,viewWidth-8,viewWidth*.75+147,5) );
-    controls.push( new vmsGraph('page1', 'ff2b', 'Fuel Flow Stbd','flow.sensor2.flowCount0',0.4755096,0,30,75,viewWidth-8,viewWidth*.75+220,5) );
-  
-    controls.push( new vmsDisplay('page2', 'rg1', 'Range', '0',0.4755096,'Miles',0,0,75,viewWidth*.50-5,5,5) );   //.0005 * .264172 * 3600
-    controls.push( new vmsDisplay('page2', 'sp2', 'Speed','curspeed',2.23694,'MPH',1,1,75,viewWidth*.50,5,viewWidth*.50) );
-    controls.push( new vmsGauge('page2', 'sp1', 'MPH', 'curspeed', 2.23694,0,90,viewWidth*.75,viewWidth*.75,80,viewWidth * .125) );
-    controls.push( new vmsDisplay('page2', 'as2', 'Average Speed A','0',1,'MPH',1,1,75,viewWidth*.50-5,viewWidth*.75+95,5) );           //.0005 * .264172
-    controls.push( new vmsDisplay('page2', 'sp4', 'Average Speed B','0',1,'MPH',1,1,75,viewWidth*.50-5,viewWidth*.75+95,viewWidth*.50) );           //.0005 * .264172
-    controls.push( new vmsGraph('page2', 'sp3', 'Speed', 'curspeed',2.23694,0,90,150,viewWidth-10,viewWidth*.75+165,5) );
-    
-    $('#page2').hide();
+//    controls.push( new vmsDisplay('page1', 'th1', 'Total Hours Port','flow.sensor1.flowTime1',1/3600000,'Hours',1,0,75,viewWidth*.50-5,viewWidth*.75,5) );
+//    controls.push( new vmsDisplay('page1', 'tf1', 'Total Fuel Port','flow.sensor1.flowCount1','0.000132086', 'Gallons',1,1,75,viewWidth*.50-5,viewWidth*.75+75,5) );           //.0005 * .264172
+//        
+//    controls.push( new vmsDisplay('page1', 'ff2', 'Fuel Flow Stbd','flow.sensor2.flowCount0','0.4755096', 'GPH',1,1,75,viewWidth*.50,5,viewWidth*.50) );           //.0005 * .264172
+//    controls.push( new vmsGauge('page1', 'ff2a', 'GPH Stbd', 'flow.sensor2.flowCount0',0.4755096,0,30,viewWidth*.45,viewWidth *.45,80,viewWidth*.50) );
+//    controls.push( new vmsDisplay('page1', 'th2', 'Total Hours Stbd','flow.sensor2.flowTime1',1/3600000,'Hours',1,1,75,viewWidth*.50,viewWidth*.75,viewWidth*.50) );           //.0005 * .264172
+//    controls.push( new vmsDisplay('page1', 'tf2', 'Total Fuel Stbd','flow.sensor2.flowCount1','0.000132086', 'Gallons',1,1,75,viewWidth*.50,viewWidth*.75+75,viewWidth*.50) );           //.0005 * .264172
+//    
+//    
+////    controls.push( new vmsWarning('page1', 'fl1', 'FL', 'flow.sensor1.flowCount0',0.4755096,10,60,60,viewWidth*.75+35,viewWidth-85) );
+//
+//    controls.push( new vmsGraph('page1', 'ff1b', 'Fuel Flow Port','flow.sensor1.flowCount0',0.4755096,0,30,75,viewWidth-8,viewWidth*.75+147,5) );
+//    controls.push( new vmsGraph('page1', 'ff2b', 'Fuel Flow Stbd','flow.sensor2.flowCount0',0.4755096,0,30,75,viewWidth-8,viewWidth*.75+220,5) );
+//  
+//    controls.push( new vmsDisplay('page2', 'rg1', 'Range', '0',0.4755096,'Miles',0,0,75,viewWidth*.50-5,5,5) );   //.0005 * .264172 * 3600
+//    controls.push( new vmsDisplay('page2', 'sp2', 'Speed','curspeed',2.23694,'MPH',1,1,75,viewWidth*.50,5,viewWidth*.50) );
+//    controls.push( new vmsGauge('page2', 'sp1', 'MPH', 'curspeed', 2.23694,0,90,viewWidth*.75,viewWidth*.75,80,viewWidth * .125) );
+//    controls.push( new vmsDisplay('page2', 'as2', 'Average Speed A','0',1,'MPH',1,1,75,viewWidth*.50-5,viewWidth*.75+95,5) );           //.0005 * .264172
+//    controls.push( new vmsDisplay('page2', 'sp4', 'Average Speed B','0',1,'MPH',1,1,75,viewWidth*.50-5,viewWidth*.75+95,viewWidth*.50) );           //.0005 * .264172
+//    controls.push( new vmsGraph('page2', 'sp3', 'Speed', 'curspeed',2.23694,0,90,150,viewWidth-10,viewWidth*.75+165,5) );
+//    
+//    $('#page2').hide();
 }; 
 
  
  function startInstrumentation(){
     console.log('startInsrumentation()');
-    getSystemName();
-    updateStatus();
+//    getSystemName();
+//    updateStatus();
 //    updateValues();
-    setInterval('getSystemName()', 1000);
-    setInterval('updateStatus()', 1000);
-    setInterval('updateValues()', 500);
-    ajaxSetup();
+//    setInterval('getSystemName()', 1000);
+//    setInterval('updateStatus()', 1000);
+    setInterval('updateGauge()', 500);
+//    ajaxSetup();
     console.log('done startInstumentation()');
 };
  
+
+function updateGauge(){
+    console.log('updateGauge');
+    range = 30; //maxValue - minValue;
+    newValue = Math.floor((Math.random() * 30) + 1);
+    newValue = Number(newValue);
+    newValue = newValue.toFixed(2) - (range/2) ;
+    increment = 270 / range;
+    gauge = document.getElementById("ff1");
+    needle = gauge.getById("needle");
+//    needle.animate({transform: ["R", newValue * increment, 150/2, 150/2 ]}, 750, "<>");
+//    value = newValue;    
+    console.log('done update gauge');
+}
+
 
 function updateValues(){
 //    console.log('updateValues()');
