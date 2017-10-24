@@ -11,21 +11,34 @@ and open the template in the editor.
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/raphael.2.1.0.min.js"></script>
+   
+    <link rel="stylesheet" href="css/app.css">
     
-    <script type="text/javascript" src="js/raphael.2.1.0.min.js"></script>
-    <script type="text/javascript" src="js/vms_gauge.js"></script>
+    <script src="js/nma_gauge.js"></script>
+    <script src="js/nma_display.js"></script>
+    <script src="js/nma_graph.js"></script>
+    <script src="js/nma_warning.js"></script>
+    
+    <script src="js/app_settings.js"></script>
+    <script src="js/app.js"></script>
+    
 </head>
 <body>  
     <div data-role="page">
  
         <div data-role="header" id="title" data-position="fixed">
-            <h1>My Title fixed test</h1>
+            <h1 id="appTitle">NMM App Framework</h1>
+            <a href="#optionsmenu" 
+               class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all
+               ui-btn-icon-right ui-icon-gear ui-btn-icon-notext">Options</a>
         </div>
-            <div id="main">
-            <div id="page1" class="page">
+        
+        <div id="dashBoards">
+            <div id="dashBoard1">
             </div>
-            <div id="page2" class="page">
+            <div id="dashBoard2">
             </div>
         </div>
 
@@ -54,11 +67,96 @@ and open the template in the editor.
         </div>
         -->
         <div data-role="footer" data-position="fixed">
-            <h4>My Footer</h4>
-        </div><!-- /footer -->
- 
-    </div><!-- /page -->
+            
+            <span id="remoteNetworkStatus" class="controlPanelStatusDisabled"></span>
+            <span id="localNetworkStatus" class="controlPanelStatusDisabled"></span>
+        </div>
+        
+    </div> 
     
-    <script type="text/javascript" src="js/vms.js"></script>
+    
+    <div data-role="page" id="optionsmenu" data-dialog="true">
+        
+        <div data-role="header" id="title" data-position="fixed">
+            <h1>NMM App Options</h1>
+        </div>
+        
+        <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-mini="true">
+            <div data-role="collapsible">
+                <h3>Display Settings</h3>
+                <ul data-role="listview">
+                    <li>
+                        <div data-role="fieldcontain">
+                            <label for="screenSaverOnOff">Screen Saver:</label>
+                            <input type="checkbox" id="screenSaverOnOff" data-role="flipswitch" data-mini="true">
+                        </div>
+                    </li>
+                    <li>   
+                        <div>
+                            <div data-role="fieldcontain">
+                            <label for="demoModeOnOff">Demo Mode:</label>
+                            <input type="checkbox" id="demoModeOnOff" data-role="flipswitch" data-mini="true">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-mini="true">
+                <h3>Local Network</h3>
+                <ul data-role="listview" data-mini="true">
+                    <li>
+                        <form>
+                        <!--<div class="ui-field-contain" data-mini="true">-->
+                            <label for="localNetworkName">Network Name:</label>
+                            <input type="text" name="localNetworkName" id="localNetworkName" value="" data-mini="true" />
+                        <!--</div>-->
+                        </form>
+                    </li>
+                    <li>
+                        <div class="ui-field-contain" data-mini="true">
+                            <label for="localNetworkPassphrase">Network Passphrase:</label>
+                            <input type="text" name="localNetworkPassphrase" id="localNetworkPassphrase" value="" data-mini="true"  />
+                        </div>	
+                    </li>
+                </ul>
+                <span id="localNetworkText"></span>
+            </div>
+            <div data-role="collapsible">
+                <h3>Remote Network</h3>
+                <ul data-role="listview">
+                    <li>
+                        <div class="ui-field-contain">
+                            <label for="remoteNetworkName">Network Name:</label>
+                            <input type="text" name="remoteNetworkName" id="remoteNetworkName" value="" data-mini="true" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui-field-contain">
+                            <label for="remoteNetworkPassphrase">Network Passphrase:</label>
+                            <input type="text" name="remoteNetworkPassphrase" id="remoteNetworkPassphrase" value="" data-mini="true"  />
+                        </div>	
+                    </li>
+                </ul>
+                <span id="remoteNetworkText"></span>
+            </div>
+            <!--
+            <div data-role="collapsible">
+                <h3>Layout</h3>
+                <p>Final bit of collapsible content.</p>
+                
+                <div data-role="rangeslider" >
+                    <label for="range-1a">Rangeslider:</label>
+                    <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40">
+                    <label for="range-1b">Rangeslider:</label>
+                    <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80">
+                </div>
+            -->
+            </div>
+        </div>
+
+    </div>
+
+
+
 </body>
 </html>
